@@ -8,6 +8,7 @@ import { secondsToFrames as s } from "./data/config";
 
 const campImages = require("/public/camp.json");
 const raceImages = require("/public/races.json");
+const stateImages = require("/public/state.json");
 
 const { width, height } = CANVAS;
 
@@ -19,25 +20,35 @@ getFont();
 export const RemotionVideo = () => {
   const campArr = Array.from(campImages) as string[];
   const raceArr = Array.from(raceImages) as string[];
+  const stateArr = Array.from(stateImages) as string[];
   return (
     <>
       <Composition
         id="Camp"
         component={SlideSeries}
-        durationInFrames={s(campArr.length + 1)}
+        durationInFrames={s((campArr.length + 1) * 2)}
         fps={FPS}
         width={width}
         height={height}
-        defaultProps={{ arr: campArr, path: "/images/camp/" }}
+        defaultProps={{ arr: campArr, path: "/images/camp/", seconds: 2 }}
       />
       <Composition
         id="Race"
         component={SlideSeries}
-        durationInFrames={s(raceArr.length + 1)}
+        durationInFrames={s((raceArr.length + 1) * 2)}
         fps={FPS}
         width={width}
         height={height}
-        defaultProps={{ arr: raceArr, path: "/images/races/" }}
+        defaultProps={{ arr: raceArr, path: "/images/races/", seconds: 2 }}
+      />
+      <Composition
+        id="State"
+        component={SlideSeries}
+        durationInFrames={s((stateArr.length + 1) * 2)}
+        fps={FPS}
+        width={width}
+        height={height}
+        defaultProps={{ arr: stateArr, path: "/images/state/", seconds: 2 }}
       />
     </>
   );

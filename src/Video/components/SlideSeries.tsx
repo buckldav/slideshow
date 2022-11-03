@@ -13,15 +13,17 @@ import Slide from "./Slide";
 export default function SlideSeries({
   arr,
   path,
+  seconds,
 }: {
   arr: string[];
   path: string;
+  seconds: number;
 }) {
   return (
     <AbsoluteFill style={{ background: "black" }}>
       <Series>
         {arr.map((img, i) => (
-          <Series.Sequence durationInFrames={s(1)}>
+          <Series.Sequence durationInFrames={s(seconds)}>
             <Slide src={(path + img) as string} />
           </Series.Sequence>
         ))}

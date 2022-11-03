@@ -7,3 +7,7 @@ fs.readdir("./public/images/camp", (err, files) => {
 fs.readdir("./public/images/races", (err, files) => {
   fs.writeFileSync("./public/races.json", JSON.stringify(files));
 });
+
+fs.readdir("./public/images/state", (err, files) => {
+  fs.writeFileSync("./public/state.json", JSON.stringify(files));
+});
